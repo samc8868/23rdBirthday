@@ -209,9 +209,6 @@
     .wishes-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 24px; }
     .wish-card { padding: 18px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
     .card-peach { background: #ffe3e3; }
-    .card-blue { background: #e0f2fe; }
-    .card-mint { background: #dcfce7; }
-    .card-yellow { background: #fef9c3; }
 
     /* Modals */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 20px; }
@@ -445,12 +442,26 @@
         }, 5000);
       });
 
+      const DEFAULT_WISHES = [
+        { "name": "Sam", "msg": "Asheghetam" },
+        { "name": "Dad", "msg": "Happy Birthday Ashkan" },
+        { "name": "Kaz", "msg": "Cakes and Candles homie" },
+        { "name": "Rajan", "msg": "Happy birthday bro" },
+        { "name": "MINOO", "msg": "hello dear happy birthday Azizam" },
+        { "name": "Your MOM", "msg": "WOW HELLOW HAPPY BIRTHDAY I MADE A WEBSITE YAY" }
+      ];
+
       function renderWishes() {
-        const list = JSON.parse(localStorage.getItem('ashkan_wishes') || '[{"name":"Sam","msg":"Happy 23rd Birthday, Ashkan! So proud of everything you are building and accomplishing. Have the best day! 🎂🎉"},{"name":"Friends & Family","msg":"Wishing you endless happiness, good health, and an unforgettable 23rd year! ✨"}]');
+        const localSaved = JSON.parse(localStorage.getItem('ashkan_custom_wishes') || '[]');
+        const allWishes = [...localSaved, ...DEFAULT_WISHES];
         const wall = document.getElementById('wishes-wall');
         wall.innerHTML = '';
-        list.forEach(w => {
-          wall.innerHTML += `<div class="wish-card card-peach"><strong>💌 ${w.name}</strong><p style="margin-top:6px;font-style:italic;">"${w.msg}"</p></div>`;
+        allWishes.forEach(w => {
+          wall.innerHTML += `
+            <div class="wish-card card-peach">
+              <strong style="display: flex; align-items: center; gap: 6px; font-size: 1.05rem;">💌 ${w.name}</strong>
+              <p style="margin-top: 8px; font-style: italic; font-size: 0.95rem; color: #334155;">"${w.msg}"</p>
+            </div>`;
         });
       }
 
@@ -458,9 +469,9 @@
         e.preventDefault();
         const name = document.getElementById('wish-author').value.trim();
         const msg = document.getElementById('wish-content').value.trim();
-        const list = JSON.parse(localStorage.getItem('ashkan_wishes') || '[]');
+        const list = JSON.parse(localStorage.getItem('ashkan_custom_wishes') || '[]');
         list.unshift({ name, msg });
-        localStorage.setItem('ashkan_wishes', JSON.stringify(list));
+        localStorage.setItem('ashkan_custom_wishes', JSON.stringify(list));
         renderWishes();
         e.target.reset();
         confetti.burst(window.innerWidth / 2, window.innerHeight * 0.7, 50);
