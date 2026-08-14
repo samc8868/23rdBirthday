@@ -177,13 +177,16 @@
     .carousel-dots {
       display: flex;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       margin-top: 18px;
       flex-wrap: wrap;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .carousel-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #cbd5e1;
       border: none;
@@ -277,7 +280,7 @@
       <div class="carousel-container">
         <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous photo">‹</button>
         <button class="carousel-btn next" id="carousel-next" aria-label="Next photo">›</button>
-        <div class="carousel-counter" id="carousel-counter">1 / 13</div>
+        <div class="carousel-counter" id="carousel-counter">1 / 26</div>
         <div class="carousel-track" id="carousel-track"></div>
       </div>
 
@@ -324,6 +327,19 @@
 
   <script>
     const PHOTO_IDS = [
+      "1cdtOidOH65YwThT1CAVhdurQdI-n6El0",
+      "1Wgdu2jkE5gndSgiE6zJb0sbWOkYhJLa-",
+      "1YtpcuVXEblehqU-2iu17tWZEDzpoR0mk",
+      "1PZgDcKigXMpp2EtahfbErmQzkDQENp6f",
+      "15sNcelOZbmyUn3PavGzcX_YA48FHzk56",
+      "1s_e6CmkGD9lMnyJVuhce3_m2e6DpUJap",
+      "1GTcMsLZNMZA2N3jyEM5Tdl4iY9hFgBBS",
+      "17tV0B8-s3gq1_ieQhmkKV1xvBfEdWx8b",
+      "1vaCsLWmlZf2yqzIO_za-fYIDkBPRkv8J",
+      "1Wy9JL7yq-U-fFsI6KsekKbABAhPJKUQT",
+      "10BCp-EUb3LD4F4x5O2T58ujCV8VHFLID",
+      "1gTkh56D_yR_6uNu3E0uoAORSxWNy_UPA",
+      "1Hp7Yz6a2MwzHsj92wOnZLPkloEA9R_mU",
       "19l7NrTXC08SQFBKSq5bKSLw8I_SxXSC5",
       "14ZiyklXl9ybOJlhYWQMuKGyG7-G68Iuc",
       "114Kn1U-hF4n7iPduR9FUx8F81QQFHoxx",
