@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday! 🎉</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Animated Background Elements -->
+  <div class="bg-decorations" aria-hidden="true">
+    <div class="balloon">🎈</div>
+    <div class="balloon">✨</div>
+    <div class="balloon">🎂</div>
+    <div class="balloon">🎉</div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand-badge">
+        <span>🎂</span> Special Celebration
+      </div>
+      <div class="header-actions">
+        <a href="#cake-section" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.9rem;">Make a Wish</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-tag">Special Day Edition</div>
+      <h1 id="hero-title">Happy Birthday, <span class="recipient-name">Birthday Star</span>! 🎉</h1>
+      <p id="hero-subtitle">Wishing you a wonderful day filled with happiness, laughter, and memorable moments.</p>
+      <div class="hero-buttons">
+        <button id="btn-celebrate" class="btn btn-primary">
+          <span>🎊</span> Pop Confetti!
+        </button>
+        <a href="#wishes-section" class="btn btn-secondary">
+          <span>💌</span> Leave a Wish
+        </a>
+      </div>
+    </section>
+
+    <!-- Interactive Section: Cake & Gift Box -->
+    <section class="interactive-section" id="cake-section">
+      <!-- Virtual Birthday Cake -->
+      <div class="feature-card">
+        <h2>🎂 Make a Wish!</h2>
+        <div class="cake-wrapper" id="cake-container" title="Click to blow out the candle">
+          <div class="flame" id="candle-flame"></div>
+          <div class="candle"></div>
+          <div class="cake-top"></div>
+          <div class="cake-tier"></div>
+        </div>
+        <p class="hint" id="cake-instruction">Click the candle to blow it out and make your wish!</p>
+      </div>
+
+      <!-- Surprise Gift Box -->
+      <div class="feature-card">
+        <h2>🎁 Surprise Gift</h2>
+        <div class="gift-interactive-wrapper" id="gift-box-interactive" title="Click to unwrap your gift!">
+          <div class="gift-box">
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+            <div class="gift-bow"></div>
+          </div>
+        </div>
+        <p class="hint">Click the gift box to reveal a special note inside!</p>
+      </div>
+    </section>
+
+    <!-- Memories Gallery Section -->
+    <section class="memories-section">
+      <div class="section-header">
+        <h2>✨ Highlight Moments</h2>
+        <p>A few snapshots celebrating great times and adventures</p>
+      </div>
+      <div class="memories-grid" id="memories-grid">
+        <!-- Rendered dynamically from config.js -->
+      </div>
+    </section>
+
+    <!-- Wishes Board / Guestbook -->
+    <section class="wishes-section" id="wishes-section">
+      <div class="section-header" style="margin-top: 0;">
+        <h2>💌 Birthday Wishes & Guestbook</h2>
+        <p>Add your personalized wish to the celebration board!</p>
+      </div>
+
+      <!-- Add Wish Form -->
+      <div class="wish-form-wrapper">
+        <form id="new-wish-form">
+          <div class="form-group">
+            <label for="wish-author">Your Name</label>
+            <input type="text" id="wish-author" class="form-input" placeholder="e.g., Alex" required />
+          </div>
+          <div class="form-group">
+            <label for="wish-content">Your Birthday Message</label>
+            <textarea id="wish-content" class="form-textarea" rows="3" placeholder="Write something sweet, fun, or inspiring..." required></textarea>
+          </div>
+          <div class="form-group" style="display: flex; gap: 12px; align-items: flex-end;">
+            <div style="flex: 1;">
+              <label for="wish-color">Card Color</label>
+              <select id="wish-color" class="form-select">
+                <option value="card-peach">Warm Peach</option>
+                <option value="card-blue">Sky Blue</option>
+                <option value="card-mint">Mint Green</option>
+                <option value="card-yellow">Sunny Yellow</option>
+                <option value="card-lavender">Soft Lavender</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="height: 48px;">
+              Post Wish ✨
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Wishes Cards Wall -->
+      <div class="wishes-wall" id="wishes-wall">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Made with ❤️ to celebrate <span class="recipient-name">a very special person</span>'s birthday!</p>
+    </footer>
+  </div>
+
+  <!-- Surprise Gift Modal -->
+  <div class="modal-overlay" id="gift-modal">
+    <div class="modal-content">
+      <button class="btn-close-modal" id="close-gift-modal" aria-label="Close modal">×</button>
+      <h2 id="gift-note-title">A Special Birthday Message 🎁</h2>
+      <p id="gift-note-body">Wishing you a fantastic birthday and an even better year ahead! May all your goals and dreams turn into reality.</p>
+      <div class="modal-signature" id="gift-note-signature">With love & best wishes ❤️</div>
+    </div>
+  </div>
+
+  <!-- Live Customization Modal -->
+  <div class="modal-overlay" id="customizer-modal">
+    <div class="modal-content">
+      <button class="btn-close-modal" id="close-customizer-modal" aria-label="Close modal">×</button>
+      <h2>⚙️ Customize Birthday Website</h2>
+      <p style="font-size: 0.9rem; margin-bottom: 16px;">Quickly test how the website looks with your friend's details!</p>
+      <form id="customizer-form">
+        <div class="form-group">
+          <label for="cust-name">Recipient Name</label>
+          <input type="text" id="cust-name" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="cust-title">Headline</label>
+          <input type="text" id="cust-title" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="cust-subtitle">Subtitle Message</label>
+          <textarea id="cust-subtitle" class="form-textarea" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="cust-gift-title">Gift Note Title</label>
+          <input type="text" id="cust-gift-title" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label for="cust-gift-body">Gift Note Message</label>
+          <textarea id="cust-gift-body" class="form-textarea" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          Apply Changes 🎉
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Customize Button -->
+  <button id="btn-open-customizer" class="floating-customizer-btn" title="Quick edit details">
+    <span>✏️</span> Customize Preview
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/confetti.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
